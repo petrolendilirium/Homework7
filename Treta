@@ -1,0 +1,71 @@
+using System;
+
+namespace Treta
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Input the size of the array m: ");
+            int m = int.Parse(Console.ReadLine());
+            Console.Write("Input the size of the array n: ");
+            int n = int.Parse(Console.ReadLine());
+            int[,] arr = new int[m, n];
+            int[] arrMin = new int[n];
+            int[] arrMax = new int[n];
+            Random rd = new Random();
+            int min = 101;
+            int minRow = 0;
+            int max = -101;
+            int maxRow = 0;
+            int minArith = 0;
+            int maxArith = 0;
+            
+
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    arr[i, j] = rd.Next(-100, 100);
+                    Console.Write("{0} ", arr[i, j]);
+                    if (arr[i, j] > max)
+                    {
+                        max = arr[i, j];
+                        maxRow = i;
+                    }
+                    else if (arr[i, j] < min)
+                    {
+                        min = arr[i, j];
+                        minRow = i;
+                    }
+                }
+                Console.WriteLine();
+            }
+
+            for (int i = 0; i < n; i++)
+            {                
+                arrMin[i] = arr [minRow, i];
+                minArith += arrMin[i];                
+            }
+
+            if (maxRow == minRow)
+            {
+                minArith = maxArith;
+            }
+            else
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    arrMax[i] = arr[maxRow, i];
+                    maxArith += arrMax[i];
+                }
+            }
+
+            Console.Write("The minimum arithmetic sum is: {0}\n", minArith = minArith/n);
+            Console.Write("The maximum arithmetic sum is: {0}", maxArith = maxArith/n);
+
+
+
+        }
+    }
+}
