@@ -1,0 +1,44 @@
+using System;
+
+namespace Peta
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Input the size of the array: ");
+            int n = int.Parse(Console.ReadLine());
+            int[,] arr = new int[n, n];
+            Random rd = new Random();
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    arr[i, j] = rd.Next(-10, 10);
+                    Console.Write("{0} ", arr[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            metod(arr,n);
+
+        }
+
+        static void metod (int[,] array, int n)
+        {
+            Console.Write("Input the special number A: ");
+            int a = int.Parse(Console.ReadLine());
+            for (int i = 1; i < n; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (array [i,j] > a)
+                    {
+                        Console.Write("{0} ", array[i, j]);
+                    }
+                }
+            }
+        }
+    }
+}
