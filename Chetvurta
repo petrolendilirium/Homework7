@@ -1,0 +1,52 @@
+using System;
+
+namespace Chetvurta
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Input the first number: ");
+            int m = int.Parse(Console.ReadLine());
+            Console.Write("Input the second number: ");
+            int n = int.Parse(Console.ReadLine());
+            bool cc = true;
+
+            bool answer = check(m, n);
+
+            if (m % n == 0)
+            {
+                Console.WriteLine("The first number is divided by the second without remainder");
+                cc = true;
+            }
+            else
+            {
+                Console.WriteLine("The first number is divided by the second with remainder");
+                cc = false;
+            }
+
+            if (cc == answer)
+            {
+                Console.WriteLine("The check is right");
+            }
+            else
+            {
+                Console.WriteLine("The check is wrong");
+            }
+            
+
+        }
+
+        static bool check(int a, int b)
+        {
+            if (a % b == 0)
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+        }
+
+    }
+}
