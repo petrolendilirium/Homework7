@@ -1,0 +1,73 @@
+using System;
+
+namespace VtoraZadacha
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Console.Write("Input the size of the array m: ");
+            int m = int.Parse(Console.ReadLine());
+            Console.Write("Input the size of the array n: ");
+            int n = int.Parse(Console.ReadLine());
+            double[,] arr = new double[m, n];
+            double[,] maxArr = new double[m, n];
+            Random rd = new Random();
+            double max = -101;
+            int maxColl = 0;
+
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    arr[i, j] = rd.Next(-100, 100);
+                    Console.Write("{0} ", arr[i, j]);
+                    if (arr[i, j] > max)
+                    {
+                        max = arr[i, j];
+                        maxColl = j;
+                    }
+                }
+                Console.WriteLine();
+            }
+
+            arrayb(arr,m,maxColl);
+
+
+        }
+
+        static void arrayb(double[,] array, int m, int coll)
+        {
+            double[] arrayB = new double[m];
+            for (int i = 0; i < m; i++)
+            {
+                arrayB[i] = array[i, coll];
+            }
+
+            double[] t = new double[1];
+
+            for (int i = 0; i < m; i++)
+            {                                                
+                for (int j = 0; j < m; j++)
+                {
+                    t[0] = arrayB[i];
+                    if (arrayB[i] > arrayB[j])
+                    {
+                        arrayB[i] = arrayB[j];
+                        arrayB[j] = t[0];
+                    }
+                }
+            }
+
+            Console.Write("\nThe new aray B: ");
+            for (int i = 0; i < m; i++)
+            {                
+                Console.Write("{0} ", arrayB[i]);
+            }
+
+        }
+
+        
+    }
+}
