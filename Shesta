@@ -1,0 +1,70 @@
+using System;
+
+namespace Shesta
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Input the size of the arrays: ");
+            int n = int.Parse(Console.ReadLine());
+            int[,] arrA = new int[n, n];
+            int[,] arrB = new int[n, n];
+            int[,] arrC = new int[n, n];
+            Random rd = new Random();
+
+            Console.WriteLine("\nArray A:\n");
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    arrA[i, j] = rd.Next(-10, 10);
+                    Console.Write("{0} ", arrA[i, j]);
+                    arrC[i, j] = arrA[i, j];
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\nArray B:\n");
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    arrB[i, j] = rd.Next(-10, 10);                    
+                    Console.Write("{0} ", arrB[i, j]);                    
+                }
+                Console.WriteLine();
+            }
+
+            swap(arrA, arrB, arrC, n);
+
+        }
+
+        static void swap(int[,] arrayA, int[,] arrayB, int[,] arrayC, int n)
+        {
+            Console.WriteLine("\nThe swapped A array:\n");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {                    
+                    arrayA [i,j] = arrayB[j,i];
+                    Console.Write("{0} ", arrayA[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\nThe swapped B array:\n");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    arrayB[i, j] = arrayC[j, i];
+                    Console.Write("{0} ", arrayB[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
