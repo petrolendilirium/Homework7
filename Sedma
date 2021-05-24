@@ -1,0 +1,52 @@
+using System;
+
+namespace Sedma
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Input the size of the array m: ");
+            int m = int.Parse(Console.ReadLine());
+            Console.Write("Input the size of the array n: ");
+            int n = int.Parse(Console.ReadLine());
+            int[,] arrA = new int[m, n];
+            Random rd = new Random();
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    arrA[i, j] = rd.Next(-10, 10);
+                    Console.Write("{0} ", arrA[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            arrayb(arrA, m, n);
+
+        }
+
+        static void arrayb(int[,] array, int m, int n)
+        {
+            Console.Write("\nThe new aray B: ");
+            int[] arrayB = new int[m * n];
+            int cnt = 0;
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (i > (j + 1) && array[i,j] > 0)
+                    {
+                        arrayB[cnt] = array[i, j];
+                        Console.Write("{0} ", arrayB[cnt]);
+                        cnt++;
+                    }
+                }
+            }
+
+
+
+        }
+    }
+}
